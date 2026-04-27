@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<title>最新機種レポート | L/ ミリオンゴッド /CX</title>
+<style>
+  :root{
+    --primary:#8B0000;
+    --primary-light:#c41e3a;
+    --gold:#d4af37;
+    --bg:#fafafa;
+    --bg-card:#ffffff;
+    --text:#1a1a1a;
+    --text-sub:#666;
+    --border:#e0e0e0;
+    --good:#1b5e20;
+    --warn:#e65100;
+    --bad:#b71c1c;
+    --highlight:#fff8dc;
+    --row-alt:#f7f7f7;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:-apple-system,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;line-height:1.65}
+  .container{max-width:1280px;margin:0 auto;padding:24px}
+
+  /* Header */
+  header.report-header{
+    background:linear-gradient(135deg,var(--primary) 0%,var(--primary-light) 100%);
+    color:#fff;
+    padding:36px 32px;
+    border-radius:8px;
+    margin-bottom:28px;
+    box-shadow:0 4px 16px rgba(139,0,0,0.18);
+  }
+  header h1{margin:0 0 6px;font-size:28px;font-weight:700;letter-spacing:0.02em}
+  header .subtitle{font-size:15px;opacity:0.95;margin-top:4px}
+  header .meta{display:flex;flex-wrap:wrap;gap:18px;margin-top:18px;font-size:13px}
+  header .meta div{background:rgba(255,255,255,0.15);padding:6px 14px;border-radius:4px;backdrop-filter:blur(4px)}
+  header .meta strong{color:var(--gold)}
+
+  .alert{
+    background:#fff3cd;
+    border-left:4px solid var(--warn);
+    padding:14px 18px;
+    margin-bottom:24px;
+    border-radius:4px;
+    font-size:14px;
+  }
+  .alert strong{color:var(--warn)}
+
+  /* Sections */
+  section{
+    background:var(--bg-card);
+    border-radius:8px;
+    margin-bottom:24px;
+    padding:28px 32px;
+    box-shadow:0 1px 4px rgba(0,0,0,0.06);
+  }
+  h2{
+    color:var(--primary);
+    border-bottom:3px solid var(--primary);
+    padding-bottom:8px;
+    margin-top:0;
+    margin-bottom:20px;
+    font-size:22px;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  h2 .num{
+    background:var(--primary);
+    color:#fff;
+    width:32px;height:32px;
+    border-radius:50%;
+    display:inline-flex;align-items:center;justify-content:center;
+    font-size:15px;
+    flex-shrink:0;
+  }
+  h3{color:#333;border-left:4px solid var(--gold);padding-left:10px;margin-top:24px;font-size:17px}
+
+  /* Tables */
+  table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:13.5px;
+    margin:8px 0 16px;
+    background:#fff;
+  }
+  th,td{
+    border:1px solid var(--border);
+    padding:8px 12px;
+    text-align:left;
+  }
+  th{
+    background:#3a3a3a;
+    color:#fff;
+    font-weight:600;
+    font-size:13px;
+  }
+  th.r,td.r{text-align:right;font-variant-numeric:tabular-nums}
+  th.c,td.c{text-align:center}
+  tbody tr:nth-child(even){background:var(--row-alt)}
+  tbody tr:hover{background:#fff8e1}
+  td.hl,th.hl{background:var(--highlight) !important;font-weight:700}
+  tr.hl-row td{background:#ffe8e8 !important;font-weight:700;color:var(--bad)}
+  tr.hl-row td.r{color:var(--bad)}
+
+  /* Badges */
+  .badge{display:inline-block;padding:2px 8px;border-radius:11px;font-size:11.5px;font-weight:700;color:#fff}
+  .badge.good{background:var(--good)}
+  .badge.warn{background:var(--warn)}
+  .badge.bad{background:var(--bad)}
+  .badge.gold{background:var(--gold);color:#000}
+  .badge.gray{background:#777}
+
+  /* Summary cards */
+  .summary-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:14px;
+    margin:16px 0;
+  }
+  .summary-card{
+    background:linear-gradient(135deg,#fff 0%,#fafafa 100%);
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:16px 18px;
+    border-top:4px solid var(--primary);
+  }
+  .summary-card .label{font-size:12px;color:var(--text-sub);margin-bottom:4px}
+  .summary-card .value{font-size:24px;font-weight:700;color:var(--primary);font-variant-numeric:tabular-nums}
+  .summary-card .compare{font-size:11px;color:var(--text-sub);margin-top:4px}
+  .summary-card.gold{border-top-color:var(--gold)}
+  .summary-card.gold .value{color:#b8860b}
+
+  /* Stars */
+  .stars{color:var(--gold);letter-spacing:1px;font-size:14px}
+
+  /* Lists */
+  ul.actions{padding-left:20px}
+  ul.actions li{margin:6px 0}
+  ol.actions{padding-left:24px}
+  ol.actions li{margin:8px 0}
+
+  /* Footer */
+  footer{text-align:center;padding:20px;color:var(--text-sub);font-size:12px;border-top:1px solid var(--border);margin-top:20px}
+
+  /* Notes */
+  .note{
+    background:#e8f4f8;
+    border-left:3px solid #1976d2;
+    padding:10px 14px;
+    margin:12px 0;
+    border-radius:4px;
+    font-size:13.5px;
+  }
+
+  /* Print */
+  @media print{
+    body{background:#fff}
+    section,header.report-header{box-shadow:none;break-inside:avoid}
+    .container{max-width:100%;padding:0}
+  }
+
+  /* Toggle for tables */
+  details{margin:10px 0}
+  details summary{
+    cursor:pointer;
+    padding:8px 12px;
+    background:#f0f0f0;
+    border-radius:4px;
+    font-weight:600;
+    user-select:none;
+  }
+  details[open] summary{margin-bottom:8px}
+
+  /* Bar component */
+  .bar-wrap{display:flex;align-items:center;gap:8px;font-size:12px}
+  .bar{flex:1;height:8px;background:#eee;border-radius:4px;overflow:hidden;min-width:60px}
+  .bar-fill{height:100%;background:linear-gradient(90deg,var(--primary) 0%,var(--gold) 100%);border-radius:4px}
+
+  /* Checklist */
+  .checklist{list-style:none;padding-left:0}
+  .checklist li{padding:4px 0;font-size:13.5px}
+  .checklist li::before{content:"☐ ";color:var(--text-sub);font-size:16px}
+
+  /* TOC */
+  html{scroll-behavior:smooth}
+  section[id], h3[id], h4[id]{scroll-margin-top:16px}
+  .toc{
+    background:linear-gradient(180deg,#fafafa 0%,#fff 100%);
+    border:1px solid var(--border);
+    border-left:4px solid var(--primary);
+    border-radius:6px;
+    padding:20px 28px;
+    margin-bottom:24px;
+    box-shadow:0 1px 4px rgba(0,0,0,0.06);
+  }
+  .toc h3{
+    margin:0 0 14px;
+    color:var(--primary);
+    border:none;
+    padding:0;
+    font-size:17px;
+    border-left:none;
+  }
+  .toc > ol{
+    list-style:none;
+    padding-left:0;
+    margin:0;
+    columns:2;
+    column-gap:40px;
+  }
+  .toc > ol > li{
+    margin:5px 0;
+    break-inside:avoid;
+    font-size:14px;
+  }
+  .toc > ol > li > a{
+    color:var(--text);
+    text-decoration:none;
+    font-weight:600;
+  }
+  .toc > ol > li > a::before{
+    content:"■ ";
+    color:var(--primary);
+    margin-right:2px;
+  }
+  .toc ol ol{
+    list-style:none;
+    padding-left:14px;
+    margin:3px 0 8px;
+  }
+  .toc ol ol li{
+    font-size:12.5px;
+    margin:1px 0;
+  }
+  .toc ol ol a{
+    color:var(--text-sub);
+    text-decoration:none;
+  }
+  .toc ol ol a::before{
+    content:"▸ ";
+    color:var(--gold);
+  }
+  .toc a:hover{
+    color:var(--primary);
+    text-decoration:underline;
+  }
+  .toc-back{
+    display:inline-block;
+    margin-top:8px;
+    font-size:11.5px;
+    color:var(--text-sub);
+    text-decoration:none;
+    padding:2px 8px;
+    border-radius:11px;
+    background:#f0f0f0;
+  }
+  .toc-back:hover{background:var(--primary);color:#fff}
+  @media print{
+    .toc-back{display:none}
+    .toc > ol{columns:1}
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+<header class="report-header">
+  <h1>📊 最新機種レポート ／ スロット編</h1>
+  <div class="subtitle">L/ ミリオンゴッド /CX（スマスロ ART/AT）</div>
+  <div class="meta">
+    <div>📅 発売日 <strong>2026/04/19</strong></div>
+    <div>⏱ 集計基準 <strong>2026/04/26 時点（7日間確定）</strong></div>
+    <div>📁 データ <strong>機種別推移 / Sスペック比較 / 期間比較 / 全国S設定別分布</strong></div>
+    <div>🔄 7日確定版 <strong>本レポート</strong></div>
+  </div>
+</header>
+
+<nav class="toc" id="toc">
+  <h3>📑 目次</h3>
+  <ol>
+    <li><a href="#sec-0">エグゼクティブサマリー</a></li>
+    <li><a href="#sec-1">評価対象機種</a></li>
+    <li>
+      <a href="#sec-2">機種別推移（全国版）— 7日確定</a>
+      <ol>
+        <li><a href="#sec-2-1">2-1. 主要KPI（日次／7日確定）</a></li>
+        <li><a href="#sec-2-2">2-2. 超率打込（7日確定）</a></li>
+      </ol>
+    </li>
+    <li><a href="#sec-3">2024〜2026年既存ヒット機種との比較</a></li>
+    <li>
+      <a href="#sec-4">スペック評価（Sスペック比較データ）</a>
+      <ol>
+        <li><a href="#sec-4-1">4-1. MY突破率 設定1 vs 設定6（7日確定）</a></li>
+        <li><a href="#sec-4-2">4-2. 奇数 vs 偶数 設定の特徴分析</a></li>
+        <li><a href="#sec-4-3">4-3. 差枚オーバー率</a></li>
+        <li><a href="#sec-4-4">4-4. 勝率・出玉率・台粗利・使用割合</a></li>
+        <li><a href="#sec-4-5">4-5. 設定別 日次推移（4/20〜4/26・7日）</a></li>
+      </ol>
+    </li>
+    <li><a href="#sec-5">7日終了時 主要指標（実績）</a></li>
+    <li><a href="#sec-6">10週目（10週終了時点）予測</a></li>
+    <li><a href="#sec-7">期間比較 — 他機種への影響</a></li>
+    <li>
+      <a href="#sec-8">総合評価</a>
+      <ol>
+        <li><a href="#sec-gw">★ GW期間 推奨配分（10台想定・7日確定）</a></li>
+      </ol>
+    </li>
+  </ol>
+</nav>
+
+<!-- 0. EXECUTIVE SUMMARY -->
+<section id="sec-0">
+  <h2><span class="num">0</span>エグゼクティブサマリー（7日確定値）</h2>
+  <p style="font-size:15px;line-height:1.8;margin:0 0 16px">
+    <strong style="color:var(--primary);font-size:16px">打込量・超率打込・打込支持率・台粗利・玉単価・動画支持率の全6指標で過去機種を凌駕する圧倒的ヒットを7日間確定で実証。</strong><br>
+    7日間累積で、台粗利 <strong style="color:var(--bad);font-size:17px">+233,105円/台</strong>（1日平均 33,300円）を達成。2023〜2025年の歴代トップ機種の7日累積（バジリスク絆2 65,809円・モンキーターン5 58,270円）の <strong>約3.5倍</strong> 水準。
+    打込量は7日通算 <strong>25,836</strong>（歴代Top水準）、<strong>打込支持率259.64%（期間比較・全機種平均の約2.6倍）</strong> でGW直前まで全国市場を吸収。
+    超率打込23,000枚は <strong>7日終了時点で81%維持</strong>、玉単価は4.124（過去比1.5倍）、出玉率95.10% で店側にラッキーな乖離も継続。
+  </p>
+
+  <div class="summary-grid">
+    <div class="summary-card gold"><div class="label">7日累積台粗利</div><div class="value">+233,105</div><div class="compare">1台/日平均 33,300円 <span class="badge gold">★★★</span></div></div>
+    <div class="summary-card gold"><div class="label">7日打込（平均）</div><div class="value">25,836</div><div class="compare">歴代Top水準維持 <span class="badge good">◎</span></div></div>
+    <div class="summary-card gold"><div class="label">打込支持率（期間比較）</div><div class="value">259.64%</div><div class="compare">全機種平均の約2.6倍 <span class="badge gold">★★★</span></div></div>
+    <div class="summary-card gold"><div class="label">超率打込 23,000（7日確定）</div><div class="value">81%</div><div class="compare">過去Top7日目=74%を超え <span class="badge gold">★★★</span></div></div>
+    <div class="summary-card gold"><div class="label">超率打込 17,000（7日確定）</div><div class="value">97%</div><div class="compare">過去メガヒット最強クラス <span class="badge gold">★★★</span></div></div>
+    <div class="summary-card gold"><div class="label">玉単価（7日平均）</div><div class="value">4.124</div><div class="compare">2023-25年平均2.7-3.3 <span class="badge gold">★★★</span></div></div>
+    <div class="summary-card gold"><div class="label">玉利（7日平均）</div><div class="value">1.273</div><div class="compare">2023-25年平均0.4-0.6 <span class="badge gold">★★★</span></div></div>
+    <div class="summary-card gold"><div class="label">動画支持率（初日）</div><div class="value">3,199%</div><div class="compare">前例なき水準 <span class="badge gold">★★★</span></div></div>
+    <div class="summary-card gold"><div class="label">中古相場（4/26時点）</div><div class="value">¥2,324,565</div><div class="compare">2023-26年最高値（-7%軟化） <span class="badge gold">★★★</span></div></div>
+  </div>
+
+  <div style="background:#fff8dc;border:1px solid var(--gold);border-radius:6px;padding:14px 18px;margin-top:16px">
+    <strong style="color:var(--primary);font-size:14px">📌 6指標の総合評価（7日確定値）</strong>
+    <table style="margin-top:8px;font-size:13.5px">
+      <thead>
+        <tr><th>評価軸</th><th>指標値（7日）</th><th>過去Top比較</th><th class="c">評価</th></tr>
+      </thead>
+      <tbody>
+        <tr><td><strong>打込量</strong></td><td class="r">25,836（7日平均）</td><td>歴代Top（化物語24,895/カバネリ25,857/バジリスク絆2 23,639）と同等以上</td><td class="c"><span class="badge good">◎</span></td></tr>
+        <tr><td><strong>打込支持率</strong></td><td class="r">259.64%（期間比較）</td><td>全機種平均の約2.6倍。同期発売機種で唯一の250%超</td><td class="c"><span class="badge gold">★★★</span></td></tr>
+        <tr><td><strong>超率打込（17,000）</strong></td><td class="r">7日終了 97%（最大99%）</td><td>過去メガヒット最強クラス（化物語/東京喰種CT/北斗の拳AD XR級）</td><td class="c"><span class="badge gold">★★★</span></td></tr>
+        <tr><td><strong>超率打込（23,000）</strong></td><td class="r">7日終了 81%（最大89%）</td><td>過去Top（化物語7日目=74%/バジリスク絆2 7日目=58%）を上回る</td><td class="c"><span class="badge gold">★★★</span></td></tr>
+        <tr><td><strong>台粗利</strong></td><td class="r">7日累積+233,105円</td><td>過去Top（バジリスク絆2 65,809/モンキーターン5 58,270）の<strong>約3.5倍</strong>の異次元水準</td><td class="c"><span class="badge gold">★★★</span></td></tr>
+        <tr><td><strong>玉単価/玉利</strong></td><td class="r">4.124 / 1.273</td><td>2023-25年平均の1.5〜3倍</td><td class="c"><span class="badge gold">★★★</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 1. 対象機種 -->
+<section id="sec-1">
+  <h2><span class="num">1</span>評価対象機種</h2>
+  <table>
+    <tbody>
+      <tr><th style="width:200px">機種名</th><td><strong>L/ ミリオンゴッド /CX</strong></td></tr>
+      <tr><th>機種タイプ</th><td>スマスロ ART/AT</td></tr>
+      <tr><th>発売日</th><td>2026/04/19</td></tr>
+      <tr><th>経過日数（本レポート時点）</th><td>7日確定（4/19〜4/25）＋ 4/26実績反映</td></tr>
+      <tr><th>同時発売機種</th><td>L機動戦士ガンダムユニコーン2jA ／ LアニマルスロットドッチZT</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 2. 機種別推移 -->
+<section id="sec-2">
+  <h2><span class="num">2</span>機種別推移（全国版）— 7日確定</h2>
+
+  <h3 id="sec-2-1">2-1. 主要KPI（日次／7日確定）</h3>
+  <table>
+    <thead>
+      <tr><th>指標</th><th class="r">第1日<br>4/19</th><th class="r">第2日<br>4/20</th><th class="r">第3日<br>4/21</th><th class="r">第4日<br>4/22</th><th class="r">第5日<br>4/23</th><th class="r">第6日<br>4/24</th><th class="r">第7日<br>4/25</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>打込</td><td class="r">23,547</td><td class="r">26,590</td><td class="r">25,992</td><td class="r">25,474</td><td class="r">25,339</td><td class="r">27,037</td><td class="r">26,014</td></tr>
+      <tr><td>打込差（％）</td><td class="r">ー</td><td class="r">112.9%</td><td class="r">97.8%</td><td class="r">98.0%</td><td class="r">99.5%</td><td class="r">106.7%</td><td class="r">96.2%</td></tr>
+      <tr class="hl-row"><td>導入機種打込比（％）</td><td class="r">115.6%</td><td class="r">114.6%</td><td class="r">113.4%</td><td class="r">117.9%</td><td class="r">118.0%</td><td class="r">114.2%</td><td class="r">114.3%</td></tr>
+      <tr><td>台売上</td><td class="r">98,169</td><td class="r">113,415</td><td class="r">111,339</td><td class="r">106,529</td><td class="r">109,270</td><td class="r">104,504</td><td class="r">99,774</td></tr>
+      <tr class="hl-row"><td>台粗利</td><td class="r">38,789</td><td class="r">38,793</td><td class="r">36,764</td><td class="r">30,056</td><td class="r">32,490</td><td class="r">29,467</td><td class="r">26,746</td></tr>
+      <tr><td>累積粗利</td><td class="r">38,789</td><td class="r">77,582</td><td class="r">114,346</td><td class="r">144,402</td><td class="r">176,892</td><td class="r">206,358</td><td class="r" style="color:var(--good)"><strong>233,105</strong></td></tr>
+      <tr><td>玉単価</td><td class="r">4.169</td><td class="r">4.265</td><td class="r">4.284</td><td class="r">4.182</td><td class="r">4.312</td><td class="r">3.865</td><td class="r">3.835</td></tr>
+      <tr><td>玉利</td><td class="r">1.647</td><td class="r">1.459</td><td class="r">1.414</td><td class="r">1.180</td><td class="r">1.282</td><td class="r">1.090</td><td class="r">1.028</td></tr>
+      <tr><td>設置台数</td><td class="r">2,035</td><td class="r">3,357</td><td class="r">3,908</td><td class="r">4,097</td><td class="r">4,210</td><td class="r">4,287</td><td class="r">4,290</td></tr>
+      <tr><td>動画再生回数</td><td class="r">11,403,154</td><td class="r">13,431,736</td><td class="r">11,438,663</td><td class="r">12,369,874</td><td class="r">9,451,003</td><td class="r">10,258,180</td><td class="r">—</td></tr>
+      <tr class="hl-row"><td>動画支持率</td><td class="r">3,198.95%</td><td class="r">2,288.73%</td><td class="r">1,389.63%</td><td class="r">1,266.26%</td><td class="r">937.22%</td><td class="r">864.98%</td><td class="r">—</td></tr>
+    </tbody>
+  </table>
+  <div class="note" style="font-size:12.5px">
+    ・<strong>累積粗利 +233,105円/台/7日</strong> — 1日平均 33,300円 で歴代Topクラス維持。<br>
+    ・打込・台粗利は第4日で一旦調整したが、第5〜6日で再加速。第7日(土)で減速 → GW突入で再上昇予測。<br>
+    ・動画支持率は初日3,199% → 第6日864%まで自然減衰（依然として極端な高水準）。
+  </div>
+
+  <h3 id="sec-2-2">2-2. 超率打込（7日確定）</h3>
+  <table>
+    <thead><tr><th>超率打込</th><th class="r">第1日</th><th class="r">第2日</th><th class="r">第3日</th><th class="r">第4日</th><th class="r">第5日</th><th class="r">第6日</th><th class="r">第7日</th></tr></thead>
+    <tbody>
+      <tr><td>8,000</td><td class="r">99%</td><td class="r">100%</td><td class="r">100%</td><td class="r">99%</td><td class="r">99%</td><td class="r">100%</td><td class="r">100%</td></tr>
+      <tr><td>11,000</td><td class="r">97%</td><td class="r">100%</td><td class="r">99%</td><td class="r">99%</td><td class="r">98%</td><td class="r">100%</td><td class="r">99%</td></tr>
+      <tr><td>14,000</td><td class="r">91%</td><td class="r">99%</td><td class="r">97%</td><td class="r">97%</td><td class="r">96%</td><td class="r">100%</td><td class="r">99%</td></tr>
+      <tr><td>17,000</td><td class="r">83%</td><td class="r">97%</td><td class="r">95%</td><td class="r">94%</td><td class="r">92%</td><td class="r hl"><strong>99%</strong></td><td class="r">97%</td></tr>
+      <tr><td>20,000</td><td class="r">71%</td><td class="r">92%</td><td class="r">91%</td><td class="r">88%</td><td class="r">87%</td><td class="r hl"><strong>96%</strong></td><td class="r">93%</td></tr>
+      <tr><td>23,000</td><td class="r">62%</td><td class="r">85%</td><td class="r">81%</td><td class="r">77%</td><td class="r">75%</td><td class="r hl"><strong>89%</strong></td><td class="r">81%</td></tr>
+    </tbody>
+  </table>
+  <div class="note">
+    <strong>第6日(4/24金)に超率全レンジでピーク</strong>を記録。23,000枚=89%、17,000枚=99% は <strong>過去全機種で見ても最強クラス</strong>。<br>
+    7日通算でも 23,000 = 平均79% と歴代Top水準を維持。
+  </div>
+
+  <h4 style="margin:18px 0 6px;color:#333">▼ 過去メガヒット機種との 超率打込（7日目時点）比較</h4>
+  <table>
+    <thead>
+      <tr><th>機種（発売）</th><th class="r">8,000</th><th class="r">11,000</th><th class="r">14,000</th><th class="r">17,000</th><th class="r">20,000</th><th class="r">23,000</th></tr>
+    </thead>
+    <tbody>
+      <tr style="background:#f7f7f7"><td><strong>Lパチスロ北斗の拳AD XR (2023/04/02)</strong></td><td class="r">100%</td><td class="r">100%</td><td class="r">100%</td><td class="r" style="color:var(--good)"><strong>100%</strong></td><td class="r" style="color:var(--good)"><strong>98%</strong></td><td class="r" style="color:var(--good)"><strong>89%</strong></td></tr>
+      <tr class="hl-row"><td><strong>L/ ミリオンゴッド /CX (2026/04/19・7日確定)</strong></td><td class="r">100%</td><td class="r">99%</td><td class="r">99%</td><td class="r">97%</td><td class="r">93%</td><td class="r">81%</td></tr>
+      <tr><td>Lスマスロ化物語KH (2025/12/07)</td><td class="r">100%</td><td class="r">99%</td><td class="r">99%</td><td class="r">96%</td><td class="r">91%</td><td class="r">74%</td></tr>
+      <tr><td>L東京喰種CT (2025/02/02)</td><td class="r">99%</td><td class="r">99%</td><td class="r">97%</td><td class="r">94%</td><td class="r">85%</td><td class="r">65%</td></tr>
+      <tr><td>L/バジリスク絆2～天膳～ (2023/12/17)</td><td class="r">99%</td><td class="r">98%</td><td class="r">95%</td><td class="r">90%</td><td class="r">79%</td><td class="r">58%</td></tr>
+    </tbody>
+  </table>
+  <div class="note" style="font-size:12.5px">
+    <strong>所見:</strong><br>
+    ・<strong>歴代の超率打込キングは『Lパチスロ北斗の拳AD XR (2023/04)』</strong>。導入機種打込比150%超を14日連続維持・23,000枚超率89%を7日目で達成した怪物機種。<br>
+    ・<strong>ミリオンゴッド/CXは北斗AD XRに次ぐ歴代第2位水準</strong>。23,000枚81%は化物語(74%)・東京喰種(65%)・バジリスク絆2(58%)を上回る。<br>
+    ・北斗AD XRが14,000枚以上で全レンジ100%を維持していたのに対し、ミリオンゴッドは97〜99% → <strong>北斗AD XRには僅差で届かないが、現代スマスロでは突出</strong>。
+  </div>
+</section>
+
+<!-- 3. 比較 -->
+<section id="sec-3">
+  <h2><span class="num">3</span>2024年・2025年・2026年既存ヒット機種との比較（7日終了時点）</h2>
+  <table>
+    <thead>
+      <tr><th>機種</th><th>発売</th><th class="r">打込</th><th class="r">台粗利</th><th class="r">玉単価</th><th class="r">玉利</th><th class="r">中古相場</th></tr>
+    </thead>
+    <tbody>
+      <tr class="hl-row"><td><strong>L/ ミリオンゴッド /CX（7日確定）</strong></td><td>2026/04/19</td><td class="r">25,836</td><td class="r">32,877</td><td class="r">4.124</td><td class="r">1.273</td><td class="r">¥2,324,565</td></tr>
+      <tr><td>L甲鉄城のカバネリ 海門決戦 XX</td><td>2026/03/01</td><td class="r">25,857</td><td class="r">9,710</td><td class="r">2.794</td><td class="r">0.376</td><td class="r">¥1,378,443</td></tr>
+      <tr><td>Lスマスロ化物語KH</td><td>2025/12/07</td><td class="r">24,831</td><td class="r">12,138</td><td class="r">2.941</td><td class="r">0.489</td><td class="r">¥322,360</td></tr>
+      <tr><td>L東京喰種CT</td><td>2025/02/02</td><td class="r">23,758</td><td class="r">13,657</td><td class="r">3.637</td><td class="r">0.575</td><td class="r">¥654,408</td></tr>
+      <tr><td>Lパチスロ鉄拳6YD01H</td><td>2026/01/04</td><td class="r">21,705</td><td class="r">12,076</td><td class="r">3.458</td><td class="r">0.556</td><td class="r">¥52,351</td></tr>
+      <tr><td>L/ヨシムネS/SC2</td><td>2025/04/20</td><td class="r">22,619</td><td class="r">15,590</td><td class="r">4.093</td><td class="r">0.689</td><td class="r">¥5,550</td></tr>
+      <tr><td>L/ 真打吉宗 /A1</td><td>2026/04/05</td><td class="r">21,111</td><td class="r">18,342</td><td class="r">4.099</td><td class="r">0.869</td><td class="r">¥743,570</td></tr>
+      <tr><td>Lスマスロ北斗の拳 転生の章2 MW</td><td>2026/01/04</td><td class="r">23,425</td><td class="r">9,382</td><td class="r">3.321</td><td class="r">0.400</td><td class="r">¥632,290</td></tr>
+      <tr><td>L押忍！番長4 A3</td><td>2024/04/21</td><td class="r">24,265</td><td class="r">9,324</td><td class="r">2.866</td><td class="r">0.384</td><td class="r">¥3,066</td></tr>
+      <tr><td>L聖闘士星矢海皇覚醒ED</td><td>2024/06/02</td><td class="r">21,542</td><td class="r">12,588</td><td class="r">4.148</td><td class="r">0.584</td><td class="r">¥7,476</td></tr>
+      <tr style="background:#f0f4ff"><td>L/バジリスク絆2～天膳～/ZN</td><td>2023/12/17</td><td class="r">23,639</td><td class="r">9,401</td><td class="r">3.210</td><td class="r">0.393</td><td class="r">—</td></tr>
+      <tr style="background:#f0f4ff"><td>Lモンキーターン5CE</td><td>2023/12/03</td><td class="r">21,333</td><td class="r">8,324</td><td class="r">2.874</td><td class="r">0.384</td><td class="r">—</td></tr>
+      <tr style="background:#f0f4ff"><td>Lラブ嬢3M4</td><td>2023/12/03</td><td class="r">18,238</td><td class="r">9,271</td><td class="r">2.904</td><td class="r">0.500</td><td class="r">—</td></tr>
+    </tbody>
+  </table>
+  <div class="note">
+    <strong>所見（7日確定値・2023〜2026年比較）:</strong><br>
+    ・打込量25,836は歴代トップクラスと同水準（化物語/カバネリ/番長4/バジリスク絆2と同レベル）。<br>
+    ・<strong>台粗利32,877は過去Top13機種平均（11,650円）の約2.8倍、バジリスク絆2(9,401)・モンキーターン5(8,324)の約3.5倍</strong>の異次元。<br>
+    ・玉単価4.124は『L/ヨシムネS/SC2』『L聖闘士星矢海皇覚醒ED』『L/真打吉宗/A1』クラスで上位。<br>
+    ・<strong>中古相場¥2,324,565は2023〜2026年の発売機種で最高値</strong>（次点『L甲鉄城のカバネリ』138万円・3年スパンで圧倒的1位）。
+  </div>
+</section>
+
+<!-- 4. スペック評価 -->
+<section id="sec-4">
+  <h2><span class="num">4</span>スペック評価（Sスペック比較データ）</h2>
+
+  <h3 id="sec-4-1">4-1. MY突破率（7日確定データ）— 設定1 vs 設定6 全閾値比較</h3>
+  <p style="font-size:13.5px;color:var(--text-sub);margin-top:0">
+    各機種ごとに <strong>設定1（最低保証ライン）</strong> と <strong>設定6（フル稼働ライン）</strong> の両方を全MY水準で比較。<br>
+    青セル＝設定1、ピンクセル＝設定6。同行で並べることで「下振れ耐性」と「上振れ爆発力」を同時に評価できる。
+  </p>
+  <style>
+    .s1{background:#bbdefb;color:#0d47a1;font-weight:600}
+    .s6{background:#f8bbd0;color:#880e4f;font-weight:600}
+  </style>
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2">機種（基準）</th>
+        <th class="r" colspan="2">MY3000+</th>
+        <th class="r" colspan="2">MY5000+</th>
+        <th class="r" colspan="2">MY10000+</th>
+        <th class="r" colspan="2">MY19000+（コンプ）</th>
+      </tr>
+      <tr>
+        <th class="r s1">設定1</th><th class="r s6">設定6</th>
+        <th class="r s1">設定1</th><th class="r s6">設定6</th>
+        <th class="r s1">設定1</th><th class="r s6">設定6</th>
+        <th class="r s1">設定1</th><th class="r s6">設定6</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="hl-row">
+        <td><strong>L/ ミリオンゴッド /CX（7日確定）</strong></td>
+        <td class="r">54.06%</td><td class="r">65.72%</td>
+        <td class="r">34.16%</td><td class="r">45.83%</td>
+        <td class="r">6.26%</td><td class="r">18.83%</td>
+        <td class="r">0.02%</td><td class="r">0.71%</td>
+      </tr>
+      <tr><td>L甲鉄城のカバネリ 海門決戦 XX</td>
+        <td class="r">47.65%</td><td class="r">75.99%</td>
+        <td class="r">17.47%</td><td class="r">48.03%</td>
+        <td class="r">0.79%</td><td class="r">12.80%</td>
+        <td class="r">0.00%</td><td class="r">0.32%</td>
+      </tr>
+      <tr><td>Lスマスロ化物語KH（'25）</td>
+        <td class="r">48.53%</td><td class="r">73.77%</td>
+        <td class="r">18.65%</td><td class="r">40.98%</td>
+        <td class="r">1.21%</td><td class="r">8.20%</td>
+        <td class="r">—</td><td class="r">—</td>
+      </tr>
+      <tr><td>L東京喰種CT（'25）</td>
+        <td class="r">59.75%</td><td class="r">77.63%</td>
+        <td class="r">33.02%</td><td class="r">55.71%</td>
+        <td class="r">3.19%</td><td class="r">17.35%</td>
+        <td class="r">0.00%</td><td class="r">0.00%</td>
+      </tr>
+      <tr><td>L/ヨシムネS/SC2（'25）</td>
+        <td class="r">53.49%</td><td class="r">71.43%</td>
+        <td class="r">27.10%</td><td class="r">51.95%</td>
+        <td class="r">3.83%</td><td class="r">14.29%</td>
+        <td class="r">0.08%</td><td class="r">2.60%</td>
+      </tr>
+      <tr><td>Lパチスロ鉄拳6YD01H</td>
+        <td class="r">50.55%</td><td class="r">73.91%</td>
+        <td class="r">24.19%</td><td class="r">52.90%</td>
+        <td class="r">2.35%</td><td class="r">19.57%</td>
+        <td class="r">—</td><td class="r">—</td>
+      </tr>
+      <tr><td>L/ 真打吉宗 /A1</td>
+        <td class="r">53.91%</td><td class="r">77.05%</td>
+        <td class="r">29.28%</td><td class="r">59.02%</td>
+        <td class="r">3.28%</td><td class="r">19.67%</td>
+        <td class="r">0.05%</td><td class="r">4.92%</td>
+      </tr>
+      <tr><td>Lスマスロ北斗の拳 転生の章2 MW</td>
+        <td class="r">43.65%</td><td class="r">59.91%</td>
+        <td class="r">22.05%</td><td class="r">39.87%</td>
+        <td class="r">3.55%</td><td class="r">15.43%</td>
+        <td class="r">0.09%</td><td class="r">1.93%</td>
+      </tr>
+      <tr style="background:#f0f0f0">
+        <td>2025年平均</td>
+        <td class="r">28.04%</td><td class="r">50.80%</td>
+        <td class="r">12.35%</td><td class="r">29.15%</td>
+        <td class="r">1.90%</td><td class="r">10.46%</td>
+        <td class="r">0.06%</td><td class="r">2.29%</td>
+      </tr>
+      <tr style="background:#f0f0f0">
+        <td>2024年平均</td>
+        <td class="r">27.58%</td><td class="r">50.50%</td>
+        <td class="r">11.05%</td><td class="r">27.07%</td>
+        <td class="r">2.03%</td><td class="r">8.86%</td>
+        <td class="r">0.14%</td><td class="r">1.53%</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="note">
+    <strong>所見（設定1 vs 設定6 の比較・7日確定）:</strong><br>
+    ・<strong>設定1：MY3000+ 54.06%</strong> は2024〜2025年平均（27〜28%）の <strong>1.9倍</strong>。お客様目線で「ハマっても1500枚は出る」という安心感。<br>
+    ・<strong>設定6：MY10000+ 18.83%</strong> は『鉄拳6（19.57%）』に次ぐ第2位、サンプル増加で <strong>3日値15.49% → 18.83% に上昇</strong>（爆発力の本来値が顕在化）。<br>
+    ・<strong>コンプ率（MY19000+）は0.71%</strong>。3日時点の2.11%から正常化（サンプル少時の過大評価が是正された）。それでも『L/ヨシムネS/SC2』クラスで上位水準。<br>
+    ・<strong>設定1と設定6の差(MY10000+) = 12.6pt</strong>に拡大。設定差が顕在化し、設定アピール戦略との相性がさらに良くなった。
+  </div>
+
+  <h3 id="sec-4-2">4-2. 奇数 vs 偶数 設定の特徴分析（過去機種との比較）</h3>
+  <p style="font-size:13.5px;color:var(--text-sub);margin-top:0">
+    設定1・3・5（奇数）と設定2・4・6（偶数）の平均値で、機種の「奇数寄り／偶数寄り」傾向を分類。<br>
+    高設定使用時の <strong>営業戦略（奇数アピール vs 偶数アピール）</strong> の判断材料となる。
+  </p>
+
+  <h4 style="margin-top:18px;margin-bottom:8px;color:#333">▼ ミリオンゴッド/CX 奇偶分析（7日確定）</h4>
+  <table>
+    <thead>
+      <tr><th>指標</th><th class="r">奇数平均(1+3+5)</th><th class="r">偶数平均(2+4+6)</th><th class="r">差分</th><th class="c">傾向</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>MY3000+ 突破率</td><td class="r"><strong>64.81%</strong></td><td class="r">57.92%</td><td class="r" style="color:var(--good)">+6.89pt</td><td class="c"><span class="badge" style="background:#1976d2">奇数寄り</span></td></tr>
+      <tr><td>MY5000+ 突破率</td><td class="r"><strong>42.62%</strong></td><td class="r">36.86%</td><td class="r" style="color:var(--good)">+5.76pt</td><td class="c"><span class="badge" style="background:#1976d2">奇数寄り</span></td></tr>
+      <tr><td>MY10000+ 突破率</td><td class="r">10.62%</td><td class="r"><strong>11.49%</strong></td><td class="r" style="color:var(--bad)">+0.87pt</td><td class="c"><span class="badge" style="background:#c2185b">偶数寄り</span></td></tr>
+      <tr><td>MY19000+（コンプ率）</td><td class="r">0.21%</td><td class="r"><strong>0.42%</strong></td><td class="r" style="color:var(--bad)">+0.21pt</td><td class="c"><span class="badge" style="background:#c2185b">偶数寄り</span></td></tr>
+      <tr><td>差枚 +3,000オーバー</td><td class="r">24.95%</td><td class="r"><strong>28.05%</strong></td><td class="r" style="color:var(--bad)">+3.10pt</td><td class="c"><span class="badge" style="background:#c2185b">偶数寄り</span></td></tr>
+      <tr><td>差枚 +10,000オーバー</td><td class="r">3.31%</td><td class="r"><strong>6.78%</strong></td><td class="r" style="color:var(--bad)">+3.47pt</td><td class="c"><span class="badge" style="background:#c2185b">偶数寄り</span></td></tr>
+      <tr><td>勝率（お客様勝率=マイナス率）</td><td class="r">42.73%</td><td class="r"><strong>47.18%</strong></td><td class="r" style="color:var(--bad)">+4.45pt</td><td class="c"><span class="badge" style="background:#c2185b">偶数寄り</span></td></tr>
+      <tr><td>出玉率</td><td class="r">99.45%</td><td class="r"><strong>103.07%</strong></td><td class="r" style="color:var(--bad)">+3.62pt</td><td class="c"><span class="badge" style="background:#c2185b">偶数寄り</span></td></tr>
+    </tbody>
+  </table>
+
+  <div style="background:#fff8dc;border:1px solid var(--gold);border-radius:6px;padding:14px 18px;margin:14px 0">
+    <strong style="color:var(--primary);font-size:15px">★ ミリオンゴッド/CX の特異な「二面性」</strong>
+    <ul style="margin:8px 0 0;padding-left:22px;line-height:1.85;font-size:14px">
+      <li><strong>中域出玉(MY3000〜5000)は奇数(特に設定5)が強い</strong> → 「ちょっと出た」体感が奇数で頻発</li>
+      <li><strong>お客様勝率・コンプ率・差枚+10000枚爆発・出玉率は偶数(特に設定6)が強い</strong> → 実質的にお客様が勝てるのは偶数</li>
+      <li>過去機種にあまりない <strong>「奇数で出玉感、偶数でお客様勝率＆爆発・コンプ」の二面性型</strong></li>
+      <li>営業上は <strong>「設定5で奇数出玉感を演出、設定4・6でお客様を実際に勝たせる」</strong> という組み合わせが効果的</li>
+    </ul>
+  </div>
+
+  <h4 style="margin-top:24px;margin-bottom:8px;color:#333">▼ 過去機種の奇偶特徴 分類（MY3000+ 基準）</h4>
+  <table>
+    <thead>
+      <tr><th>機種</th><th class="r s1">奇数平均</th><th class="r s6">偶数平均</th><th class="r">差分</th><th class="c">タイプ</th></tr>
+    </thead>
+    <tbody>
+      <tr class="hl-row"><td><strong>L/ ミリオンゴッド /CX（7日確定）</strong></td><td class="r">64.81%</td><td class="r">57.92%</td><td class="r" style="color:var(--good)"><strong>+6.89</strong></td><td class="c"><span class="badge" style="background:#1976d2">奇数寄り</span></td></tr>
+      <tr><td>Lスマスロ化物語KH</td><td class="r">52.38%</td><td class="r">61.23%</td><td class="r" style="color:var(--bad)">-8.85</td><td class="c"><span class="badge" style="background:#c2185b">偶数寄り（強）</span></td></tr>
+      <tr><td>Lパチスロ鉄拳6YD01H</td><td class="r">56.12%</td><td class="r">63.90%</td><td class="r" style="color:var(--bad)">-7.78</td><td class="c"><span class="badge" style="background:#c2185b">偶数寄り（強）</span></td></tr>
+      <tr><td>L甲鉄城のカバネリ 海門決戦 XX</td><td class="r">55.10%</td><td class="r">61.10%</td><td class="r" style="color:var(--bad)">-6.00</td><td class="c"><span class="badge" style="background:#c2185b">偶数寄り</span></td></tr>
+      <tr><td>Lスマスロ北斗の拳 転生の章2 MW</td><td class="r">48.32%</td><td class="r">53.70%</td><td class="r" style="color:var(--bad)">-5.38</td><td class="c"><span class="badge" style="background:#c2185b">偶数寄り</span></td></tr>
+      <tr><td>L/ 真打吉宗 /A1</td><td class="r">58.57%</td><td class="r">61.66%</td><td class="r" style="color:var(--bad)">-3.09</td><td class="c"><span class="badge gray">中立（3,5強）</span></td></tr>
+      <tr><td>L押忍！番長4 A3</td><td class="r">52.26%</td><td class="r">54.89%</td><td class="r" style="color:var(--bad)">-2.63</td><td class="c"><span class="badge gray">中立</span></td></tr>
+      <tr><td>L/ヨシムネS/SC2</td><td class="r">60.63%</td><td class="r">62.88%</td><td class="r" style="color:var(--bad)">-2.25</td><td class="c"><span class="badge gray">中立</span></td></tr>
+      <tr><td>L東京喰種CT</td><td class="r">66.77%</td><td class="r">68.52%</td><td class="r" style="color:var(--bad)">-1.75</td><td class="c"><span class="badge gray">中立</span></td></tr>
+      <tr><td>L Re:ゼロ season2 PA5</td><td class="r">51.88%</td><td class="r">51.53%</td><td class="r" style="color:var(--good)">+0.35</td><td class="c"><span class="badge gray">完全中立</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <strong>過去機種の奇偶傾向まとめ:</strong><br>
+    ・近年のスマスロ ART/AT は <strong>「偶数寄り」が主流</strong>（化物語・鉄拳・カバネリ・北斗転生2 など、設定6に向けて階段状に上がる設計）。<br>
+    ・<strong>奇数寄り型は極めてレア</strong>。直近2年では <span style="color:var(--bad);font-weight:700">ミリオンゴッド/CX が唯一の奇数寄り機種</span>。<br>
+    ・「中立型」は東京喰種・ヨシムネ・番長4 など、全設定で同程度に出るタイプ。<br>
+    ・<strong>営業上の意味</strong>: 偶数寄り機種は「6を1台」で集客、奇数寄り機種は「3・5を厚く」で全体稼働を底上げ。
+  </div>
+
+  <h4 style="margin-top:24px;margin-bottom:8px;color:#333">▼ 過去機種の奇偶特徴 分類（MY10000+ 基準・爆発力）</h4>
+  <table>
+    <thead>
+      <tr><th>機種</th><th class="r s1">奇数平均</th><th class="r s6">偶数平均</th><th class="r">差分</th><th class="c">爆発タイプ</th></tr>
+    </thead>
+    <tbody>
+      <tr class="hl-row"><td><strong>L/ ミリオンゴッド /CX（7日確定）</strong></td><td class="r">10.62%</td><td class="r">11.49%</td><td class="r" style="color:var(--bad)">-0.87</td><td class="c"><span class="badge" style="background:#c2185b">偶数で爆発</span></td></tr>
+      <tr><td>Lパチスロ鉄拳6YD01H</td><td class="r">3.86%</td><td class="r">8.75%</td><td class="r" style="color:var(--bad)">-4.89</td><td class="c"><span class="badge" style="background:#c2185b">偶数で爆発</span></td></tr>
+      <tr><td>L甲鉄城のカバネリ 海門決戦 XX</td><td class="r">2.36%</td><td class="r">4.97%</td><td class="r" style="color:var(--bad)">-2.61</td><td class="c"><span class="badge" style="background:#c2185b">偶数で爆発</span></td></tr>
+      <tr><td>Lスマスロ北斗の拳 転生の章2 MW</td><td class="r">6.34%</td><td class="r">8.30%</td><td class="r" style="color:var(--bad)">-1.96</td><td class="c"><span class="badge" style="background:#c2185b">偶数で爆発</span></td></tr>
+      <tr><td>Lスマスロ化物語KH</td><td class="r">2.84%</td><td class="r">4.83%</td><td class="r" style="color:var(--bad)">-1.99</td><td class="c"><span class="badge" style="background:#c2185b">偶数で爆発</span></td></tr>
+      <tr><td>L/ 真打吉宗 /A1</td><td class="r">7.67%</td><td class="r">9.18%</td><td class="r" style="color:var(--bad)">-1.51</td><td class="c"><span class="badge" style="background:#c2185b">偶数で爆発</span></td></tr>
+    </tbody>
+  </table>
+
+  <div class="note">
+    <strong>爆発力（MY10000+）の所見（7日確定）:</strong><br>
+    ・<strong>過去機種は例外なく「偶数で爆発」型</strong>。MY10000オーバーは設定6で一気に跳ねる設計が業界標準。<br>
+    ・<strong>ミリオンゴッド/CXは7日サンプルで「やや偶数寄り」に正常化</strong>（3日値の同等→偶数+0.87pt）。設定5でも MY10000+=15.86% で全機種上位。<br>
+    ・<strong>奇数高設定（設定5）でもMY10000+突破率15.86%は『鉄拳6設定6』クラス</strong>の爆発力 → <span style="color:var(--bad);font-weight:700">「奇数=出ない」のお客様固定観念を崩す稀有な機種</span>。
+  </div>
+
+  <h3 id="sec-4-3">4-3. 差枚オーバー率（7日確定データ）</h3>
+  <table>
+    <thead><tr><th>水準</th><th class="r">設定1</th><th class="r">設定2</th><th class="r">設定3</th><th class="r">設定4</th><th class="r">設定5</th><th class="r">設定6</th></tr></thead>
+    <tbody>
+      <tr><td><strong>差枚 +3,000枚オーバー</strong></td><td class="r">14.02%</td><td class="r">15.75%</td><td class="r">22.03%</td><td class="r">25.23%</td><td class="r">38.81%</td><td class="r">43.16%</td></tr>
+      <tr><td><strong>差枚 +5,000枚オーバー</strong></td><td class="r">8.59%</td><td class="r">9.88%</td><td class="r">13.85%</td><td class="r">16.63%</td><td class="r">28.05%</td><td class="r">31.79%</td></tr>
+      <tr><td><strong>差枚 +10,000枚オーバー</strong></td><td class="r">1.53%</td><td class="r">2.07%</td><td class="r">2.73%</td><td class="r">4.77%</td><td class="r">5.67%</td><td class="r">13.50%</td></tr>
+    </tbody>
+  </table>
+  <div class="note">設定5・6の差枚+5000オーバーが30%超と高く、<strong>「設定入れたら出る」が見える機種</strong>。営業上、高設定アピールの効果が大きい。</div>
+
+  <h3 id="sec-4-4">4-4. 勝率・出玉率・玉単価・使用割合・台粗利（7日確定・P-Brain実績値）</h3>
+  <p style="font-size:13px;color:var(--text-sub);margin-top:0">
+    全国S設定別分布（2026/04/27）より7日確定データを反映。<strong>勝率＝お客様勝率（差枚マイナスで終了した台の割合／=100台中お客様が勝った台の割合）</strong>。
+  </p>
+  <table>
+    <thead><tr><th>指標</th><th class="r">設定1</th><th class="r">設定2</th><th class="r">設定3</th><th class="r">設定4</th><th class="r">設定5</th><th class="r">設定6</th></tr></thead>
+    <tbody>
+      <tr><td><strong>勝率（お客様勝率=差枚マイナス台%）</strong></td><td class="r">27.38%</td><td class="r">30.14%</td><td class="r">38.21%</td><td class="r">43.72%</td><td class="r hl">62.61%</td><td class="r hl">67.67%</td></tr>
+      <tr><td>店勝率（参考＝差枚プラス台%）</td><td class="r">72.62%</td><td class="r">69.86%</td><td class="r">61.79%</td><td class="r">56.28%</td><td class="r">37.39%</td><td class="r">32.33%</td></tr>
+      <tr><td>出玉率（実績）</td><td class="r">92.42%</td><td class="r">95.35%</td><td class="r">98.01%</td><td class="r">102.18%</td><td class="r">107.91%</td><td class="r hl">111.68%</td></tr>
+      <tr><td>出玉率（メーカー公称）</td><td class="r">97.20%</td><td class="r">99.10%</td><td class="r">102.10%</td><td class="r">106.90%</td><td class="r">111.70%</td><td class="r">114.60%</td></tr>
+      <tr><td>打込</td><td class="r">25,500</td><td class="r">25,567</td><td class="r">26,655</td><td class="r">26,707</td><td class="r">27,164</td><td class="r">28,045</td></tr>
+      <tr><td>MY</td><td class="r">4,201</td><td class="r">4,139</td><td class="r">4,724</td><td class="r">4,531</td><td class="r hl">6,080</td><td class="r">5,927</td></tr>
+      <tr><td>MY単価</td><td class="r">922</td><td class="r">1,089</td><td class="r">1,200</td><td class="r">1,653</td><td class="r">2,058</td><td class="r hl">3,753</td></tr>
+      <tr><td>玉単価</td><td class="r hl">4.556</td><td class="r">3.799</td><td class="r">3.937</td><td class="r">2.740</td><td class="r">2.955</td><td class="r">1.579</td></tr>
+      <tr><td>玉利</td><td class="r" style="color:var(--good)"><strong>+1.816</strong></td><td class="r" style="color:var(--good)">+1.245</td><td class="r" style="color:var(--good)">+0.668</td><td class="r" style="color:var(--bad)">-0.202</td><td class="r" style="color:var(--bad)">-1.325</td><td class="r" style="color:var(--bad)"><strong>-2.123</strong></td></tr>
+      <tr><td>台売上</td><td class="r">116,170</td><td class="r">97,125</td><td class="r">104,932</td><td class="r">73,186</td><td class="r">80,263</td><td class="r">44,294</td></tr>
+      <tr class="hl-row"><td><strong>台粗利</strong></td><td class="r" style="color:var(--good)"><strong>+46,303</strong></td><td class="r" style="color:var(--good)"><strong>+31,821</strong></td><td class="r" style="color:var(--good)"><strong>+17,801</strong></td><td class="r" style="color:var(--bad)"><strong>-5,398</strong></td><td class="r" style="color:var(--bad)"><strong>-36,001</strong></td><td class="r" style="color:var(--bad)"><strong>-59,542</strong></td></tr>
+      <tr><td>粗利率</td><td class="r" style="color:var(--good)">39.9%</td><td class="r">32.8%</td><td class="r">17.0%</td><td class="r" style="color:var(--bad)">-7.4%</td><td class="r" style="color:var(--bad)">-44.9%</td><td class="r" style="color:var(--bad)">-134.4%</td></tr>
+      <tr><td>割数</td><td class="r">6.43</td><td class="r">7.38</td><td class="r">8.92</td><td class="r">11.70</td><td class="r">15.70</td><td class="r">25.63</td></tr>
+      <tr><td>ベース</td><td class="r">46.88</td><td class="r">47.16</td><td class="r">47.12</td><td class="r">47.87</td><td class="r">47.07</td><td class="r">51.29</td></tr>
+      <tr class="hl-row"><td><strong>使用割合（7日累計実績）</strong></td><td class="r">56.20%</td><td class="r">19.78%</td><td class="r">16.03%</td><td class="r">3.87%</td><td class="r">1.59%</td><td class="r">2.54%</td></tr>
+    </tbody>
+  </table>
+  <div class="note" style="font-size:12.5px">
+    <strong>重要な発見（7日確定データから）:</strong><br>
+    ・<strong>勝率の定義</strong>: "勝率" = <strong>お客様が勝った台の割合</strong>（=差枚マイナスで終了した台%）。設定1で27.38%、設定6で67.67%（=高設定ほどお客様が勝ちやすい）。<br>
+    ・<strong>台粗利の実態（1台/1日）</strong>: 設定4で<strong>-5,398円/日の赤字</strong>（3日値-9,625円から改善）。設定5は<strong>-36,001円/日</strong>、設定6は<strong>-59,542円/日</strong>。<br>
+    ・<strong>★全国の使用割合が大きく変化</strong>: 設定1=71.4%→<strong>56.2%（-15pt）</strong>、設定3=3.6%→<strong>16.0%（+12.4pt）</strong> → <strong>店舗側がGW準備で設定1から設定3に振替</strong>を進めた。<br>
+    ・<strong>メーカー公称 vs 実績</strong>: 実績出玉率がメーカー公称より全設定で約3〜5pt低い。設定1=92.42%（公称97.20%）→ 店側にラッキーな乖離は7日でも継続。<br>
+    ・<strong>MY単価は設定6で3,753</strong>（3日値3,420から上昇）。大きな出玉セッションがサンプル増加で顕在化。
+  </div>
+</section>
+
+  <h3 id="sec-4-5" style="margin-top:28px">4-5. 設定別 日次推移（2026/04/20〜04/26 全国実績／7日間確定）</h3>
+  <p style="font-size:13px;color:var(--text-sub);margin-top:0">
+    全国S設定別推移データより、ミリオンゴッド/CX 導入2日目〜8日目の設定別動向を抽出。<br>
+    <strong>4/23（木）以降、明らかな設定操作（設定1→設定3への振替）が観測される。GW初日4/26(日)も同水準を維持。</strong>
+  </p>
+
+  <h4 style="margin:14px 0 6px;color:#333">▼ 全体KPIの日次推移</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>日付</th><th>曜日</th>
+        <th class="r">台粗利<br>(1台/日)</th>
+        <th class="r">玉単価</th>
+        <th class="r">玉利</th>
+        <th class="r">台売上<br>(1台/日)</th>
+        <th class="r">出玉率</th>
+        <th class="r">MY</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>2026/04/20</td><td>月</td><td class="r">23,474</td><td class="r">4.136</td><td class="r">1.634</td><td class="r">97,085</td><td class="r">93.48%</td><td class="r">3,799</td></tr>
+      <tr><td>2026/04/21</td><td>火</td><td class="r">26,654</td><td class="r">4.247</td><td class="r">1.396</td><td class="r">113,191</td><td class="r">94.52%</td><td class="r">4,405</td></tr>
+      <tr><td>2026/04/22</td><td>水</td><td class="r">25,892</td><td class="r">4.291</td><td class="r">1.434</td><td class="r">111,094</td><td class="r">94.31%</td><td class="r">4,327</td></tr>
+      <tr style="border-top:3px solid var(--primary)"><td>2026/04/23</td><td>木</td><td class="r">25,424</td><td class="r">4.173</td><td class="r">1.148</td><td class="r">106,086</td><td class="r">95.73%</td><td class="r">4,436</td></tr>
+      <tr><td>2026/04/24</td><td>金</td><td class="r">25,334</td><td class="r">4.311</td><td class="r">1.285</td><td class="r">109,214</td><td class="r">95.07%</td><td class="r">4,261</td></tr>
+      <tr><td>2026/04/25</td><td>土</td><td class="r">26,993</td><td class="r">3.872</td><td class="r">1.125</td><td class="r">104,514</td><td class="r">95.75%</td><td class="r" style="color:var(--good)"><strong>4,555</strong></td></tr>
+      <tr style="background:#e8f5e9"><td>2026/04/26</td><td>日</td><td class="r">25,981</td><td class="r">3.903</td><td class="r">1.133</td><td class="r">101,407</td><td class="r">95.71%</td><td class="r">4,439</td></tr>
+      <tr style="background:#fff8dc;font-weight:700"><td colspan="2" class="r">7日間平均</td><td class="r">25,836</td><td class="r">4.124</td><td class="r">1.273</td><td class="r">106,545</td><td class="r">95.10%</td><td class="r">4,359</td></tr>
+    </tbody>
+  </table>
+  <div class="note" style="font-size:12.5px">
+    <strong>ポイント:</strong><br>
+    ・<strong>台粗利は7日間で23,500〜27,000円/1台/日の安定レンジ</strong>。GW初日(4/26日)も25,981円を維持。<br>
+    ・4/23（木）以降の設定変更後も粗利を保ち、4/24金〜4/25土でやや低下、4/26日でも安定継続。<br>
+    ・出玉率は徐々に上昇（93.48%→95.71%）→ 高設定投入が浸透している証拠。<br>
+    ・MYは4/25(土)に4,555でピーク → GW突入で再上昇可能性。
+  </div>
+
+  <h4 style="margin:18px 0 6px;color:#333">▼ 設定別 使用割合の日次推移（★店舗側の設定操作を可視化）</h4>
+  <table>
+    <thead>
+      <tr><th>日付</th><th>曜日</th><th class="r">設定1</th><th class="r">設定2</th><th class="r">設定3</th><th class="r">設定4</th><th class="r">設定5</th><th class="r">設定6</th><th class="r">高設定計<br>(4+5+6)</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2026/04/20</td><td>月</td><td class="r">73.66%</td><td class="r">17.06%</td><td class="r">2.91%</td><td class="r">3.69%</td><td class="r">1.43%</td><td class="r">1.25%</td><td class="r">6.37%</td></tr>
+      <tr><td>2026/04/21</td><td>火</td><td class="r">72.74%</td><td class="r">17.76%</td><td class="r">3.78%</td><td class="r">3.11%</td><td class="r">1.24%</td><td class="r">1.38%</td><td class="r">5.73%</td></tr>
+      <tr><td>2026/04/22</td><td>水</td><td class="r">68.42%</td><td class="r">20.18%</td><td class="r">3.76%</td><td class="r">4.12%</td><td class="r">0.99%</td><td class="r">2.53%</td><td class="r">7.64%</td></tr>
+      <tr style="background:#fff3cd;border-top:3px solid var(--warn)">
+        <td>2026/04/23</td><td>木</td>
+        <td class="r" style="color:var(--bad)"><strong>47.99%</strong></td>
+        <td class="r">19.60%</td>
+        <td class="r" style="color:var(--good)"><strong>23.95%</strong></td>
+        <td class="r">4.21%</td>
+        <td class="r">1.52%</td>
+        <td class="r">2.72%</td>
+        <td class="r" style="color:var(--good)"><strong>8.45%</strong></td>
+      </tr>
+      <tr style="background:#fff3cd"><td>2026/04/24</td><td>金</td><td class="r">47.43%</td><td class="r">20.82%</td><td class="r">24.03%</td><td class="r">4.26%</td><td class="r">1.74%</td><td class="r">1.72%</td><td class="r">7.72%</td></tr>
+      <tr style="background:#fff3cd"><td>2026/04/25</td><td>土</td><td class="r">46.94%</td><td class="r">21.48%</td><td class="r">21.37%</td><td class="r">4.08%</td><td class="r">1.99%</td><td class="r" style="color:var(--good)"><strong>4.14%</strong></td><td class="r" style="color:var(--good)"><strong>10.21%</strong></td></tr>
+      <tr style="background:#e8f5e9"><td>2026/04/26</td><td>日</td><td class="r">49.89%</td><td class="r">19.69%</td><td class="r">21.94%</td><td class="r">3.40%</td><td class="r">2.00%</td><td class="r">3.08%</td><td class="r">8.48%</td></tr>
+      <tr style="background:#fff8dc;font-weight:700"><td colspan="2" class="r">7日間平均</td><td class="r">56.20%</td><td class="r">19.78%</td><td class="r">16.03%</td><td class="r">3.87%</td><td class="r">1.59%</td><td class="r">2.54%</td><td class="r">8.00%</td></tr>
+    </tbody>
+  </table>
+
+  <div style="background:#fff8dc;border:1px solid var(--gold);border-radius:6px;padding:14px 18px;margin:14px 0">
+    <strong style="color:var(--primary);font-size:15px">★ 全国マーケットで観測された設定操作（GW準備の動き）</strong>
+    <ul style="margin:8px 0 0;padding-left:22px;line-height:1.85;font-size:14px">
+      <li><strong>4/22(水) → 4/23(木) で設定1が68.66% → 48.17%（-20pt）</strong>に大幅減</li>
+      <li>同タイミングで <strong>設定3が3.74% → 24.01%（+20pt）</strong> に急増 → <strong>設定1から設定3への振替</strong>が全国規模で発生</li>
+      <li>4/25(土)は <strong>設定6が4.13%（+1.6pt）に増加</strong>、高設定計10.15%（+2.6pt） → 週末・GW初動の高設定投入</li>
+      <li>結果として <strong>粗利率は29.42% → 33.02%</strong> に改善（設定3は粗利率20.4%で稼げる + 設定1減でも全体ベース維持）</li>
+      <li>これは <strong>「お客様勝率を引き上げつつ粗利を維持する」全国共通のGW準備シナリオ</strong>。本レポート8章のBパターン（設定3を1台投入）の妥当性を裏付け</li>
+    </ul>
+  </div>
+
+  <h4 style="margin:18px 0 6px;color:#333">▼ 設定別 台粗利の日次推移（1台/日）</h4>
+  <table>
+    <thead>
+      <tr><th>日付</th><th class="r">設定1</th><th class="r">設定2</th><th class="r">設定3</th><th class="r">設定4</th><th class="r">設定5</th><th class="r">設定6</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2026/04/20</td><td class="r" style="color:var(--good)">+46,309</td><td class="r" style="color:var(--good)">+31,750</td><td class="r" style="color:var(--good)">+29,064</td><td class="r" style="color:var(--bad)">-22,464</td><td class="r" style="color:var(--bad)">-59,391</td><td class="r" style="color:var(--bad)">-28,012</td></tr>
+      <tr><td>2026/04/21</td><td class="r" style="color:var(--good)">+45,347</td><td class="r" style="color:var(--good)">+27,806</td><td class="r" style="color:var(--good)">+19,283</td><td class="r" style="color:var(--bad)">-4,703</td><td class="r" style="color:var(--bad)">-46,405</td><td class="r" style="color:var(--bad)">-51,995</td></tr>
+      <tr><td>2026/04/22</td><td class="r" style="color:var(--good)">+47,041</td><td class="r" style="color:var(--good)">+32,984</td><td class="r" style="color:var(--good)">+21,369</td><td class="r" style="color:var(--bad)">-8,757</td><td class="r" style="color:var(--bad)">-38,735</td><td class="r" style="color:var(--bad)">-70,378</td></tr>
+      <tr><td>2026/04/23</td><td class="r" style="color:var(--good)">+45,831</td><td class="r" style="color:var(--good)">+36,540</td><td class="r" style="color:var(--good)">+11,017</td><td class="r" style="color:var(--bad)">-12,788</td><td class="r" style="color:var(--bad)">-29,427</td><td class="r" style="color:var(--bad)">-59,449</td></tr>
+      <tr><td>2026/04/24</td><td class="r" style="color:var(--good)">+46,614</td><td class="r" style="color:var(--good)">+29,846</td><td class="r" style="color:var(--good)">+20,348</td><td class="r" style="color:var(--good)">+3,617</td><td class="r" style="color:var(--bad)">-11,682</td><td class="r" style="color:var(--bad)">-34,774</td></tr>
+      <tr><td>2026/04/25</td><td class="r" style="color:var(--good)">+49,051</td><td class="r" style="color:var(--good)">+34,787</td><td class="r" style="color:var(--good)">+17,939</td><td class="r" style="color:var(--bad)">-10,955</td><td class="r" style="color:var(--bad)">-36,127</td><td class="r" style="color:var(--bad)">-67,829</td></tr>
+      <tr style="background:#e8f5e9"><td>2026/04/26</td><td class="r" style="color:var(--good)">+44,026</td><td class="r" style="color:var(--good)">+27,922</td><td class="r" style="color:var(--good)">+20,549</td><td class="r" style="color:var(--good)">+10,550</td><td class="r" style="color:var(--bad)">-47,724</td><td class="r" style="color:var(--bad)">-62,646</td></tr>
+      <tr style="background:#fff8dc;font-weight:700"><td>7日間平均</td><td class="r" style="color:var(--good)">+46,303</td><td class="r" style="color:var(--good)">+31,821</td><td class="r" style="color:var(--good)">+17,801</td><td class="r" style="color:var(--bad)">-5,398</td><td class="r" style="color:var(--bad)">-36,001</td><td class="r" style="color:var(--bad)">-59,542</td></tr>
+    </tbody>
+  </table>
+  <div class="note" style="font-size:12.5px">
+    <strong>所見:</strong><br>
+    ・<strong>設定1は安定的に+45,000〜48,500円/日</strong>を稼ぐ。日次ぶれ少なく、粗利エンジンとして機能。<br>
+    ・設定3の粗利は <strong>+11,000〜29,000円/日</strong> でぶれが大きいが、平均+17,277円/日 → 粗利率20%程度を維持。<br>
+    ・<strong>設定4は4/24に+1,717円のプラス転換</strong>を確認 → MY振り次第でプラスにできる「中庸設定」の特性。<br>
+    ・設定5・6はばらつきが大きい（設定6: -28,012〜-71,802円）→ 当たり日と外れ日の差が極端。
+  </div>
+
+  <h4 style="margin:18px 0 6px;color:#333">▼ 設定別 お客様勝率の日次推移（マイナス率%）</h4>
+  <table>
+    <thead>
+      <tr><th>日付</th><th class="r">設定1</th><th class="r">設定2</th><th class="r">設定3</th><th class="r">設定4</th><th class="r">設定5</th><th class="r">設定6</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>2026/04/20</td><td class="r">26.55%</td><td class="r">30.66%</td><td class="r">32.65%</td><td class="r">51.61%</td><td class="r">66.67%</td><td class="r">61.90%</td></tr>
+      <tr><td>2026/04/21</td><td class="r">28.54%</td><td class="r">31.61%</td><td class="r">37.38%</td><td class="r">44.32%</td><td class="r">65.71%</td><td class="r">64.10%</td></tr>
+      <tr><td>2026/04/22</td><td class="r">28.48%</td><td class="r">30.40%</td><td class="r">36.00%</td><td class="r">40.88%</td><td class="r">69.70%</td><td class="r">69.05%</td></tr>
+      <tr><td>2026/04/23</td><td class="r">26.51%</td><td class="r">28.36%</td><td class="r">41.39%</td><td class="r">48.30%</td><td class="r">58.49%</td><td class="r">68.42%</td></tr>
+      <tr><td>2026/04/24</td><td class="r">26.68%</td><td class="r">30.72%</td><td class="r">37.33%</td><td class="r">39.61%</td><td class="r">50.79%</td><td class="r">66.13%</td></tr>
+      <tr><td>2026/04/25</td><td class="r">26.38%</td><td class="r">29.01%</td><td class="r">37.94%</td><td class="r">49.32%</td><td class="r">63.89%</td><td class="r">70.00%</td></tr>
+      <tr style="background:#e8f5e9"><td>2026/04/26</td><td class="r">27.63%</td><td class="r">30.96%</td><td class="r">36.92%</td><td class="r">35.48%</td><td class="r">68.49%</td><td class="r">66.07%</td></tr>
+      <tr style="background:#fff8dc;font-weight:700"><td>7日間平均</td><td class="r">27.38%</td><td class="r">30.14%</td><td class="r">38.21%</td><td class="r">43.72%</td><td class="r">62.61%</td><td class="r">67.67%</td></tr>
+    </tbody>
+  </table>
+  <div class="note" style="font-size:12.5px">
+    ・設定別お客様勝率は日次でほぼ安定（設定1=26〜29%、設定6=62〜70%）。<br>
+    ・<strong>4/23以降、設定3のお客様勝率が37〜41%と高め</strong> → 設定3の使用率増加と整合（お客様は設定3でも勝てる体験を多く獲得）。<br>
+    ・<strong>4/26(日)に設定4で35.48%</strong>と最低を記録 → 日曜は中位設定で店側に振れた日。GW期間の運用次第で再変動可能性。
+  </div>
+
+  <div style="background:#fff8dc;border:1px solid var(--gold);border-radius:6px;padding:14px 18px;margin:14px 0">
+    <strong style="color:var(--primary);font-size:15px">★ 全国マーケットで観測された設定操作（GW準備の動き）</strong>
+    <ul style="margin:8px 0 0;padding-left:22px;line-height:1.85;font-size:14px">
+      <li><strong>4/22(水) → 4/23(木) で設定1が68.42% → 47.99%（-20pt）</strong>に大幅減</li>
+      <li>同タイミングで <strong>設定3が3.76% → 23.95%（+20pt）</strong> に急増 → <strong>設定1から設定3への振替</strong>が全国規模で発生</li>
+      <li>4/25(土)は <strong>設定6が4.14%（+1.6pt）に増加</strong>、高設定計10.21% → 週末・GW初動の高設定投入</li>
+      <li>4/26(日)は設定6が3.08%にやや減・設定3=21.94%維持・設定1は49.89%とわずかに増 → <strong>店舗が日曜に粗利寄せ</strong>の調整</li>
+      <li>結果として <strong>7日累計お客様勝率31.87%</strong> → 全国は「8章 Aパターン」とほぼ同じ配分で運営している</li>
+      <li>これは <strong>「お客様勝率を引き上げつつ粗利を維持する」全国共通のGW準備シナリオ</strong>。本レポート8章のBパターン（設定3を1台投入）の妥当性を裏付け</li>
+    </ul>
+  </div>
+
+  <div style="background:#e8f4f8;border-left:4px solid #1976d2;padding:12px 16px;margin-top:16px;font-size:13.5px;line-height:1.75">
+    <strong>📌 設定別日次推移から見える「GW期間（4/29〜5/6）以降の予測」:</strong><br>
+    ・現状の全国お客様勝率は <strong>31.87%</strong>。GWピーク日(5/3〜5/5)には <strong>34〜37%</strong> へ引き上げ予測（設定6=4〜5%、設定5=2〜3%）。<br>
+    ・本レポート8章のBパターン(4/2/1/1/1/1, お客様勝率38.20%)は、<strong>全国の動きを先取りした標準配分</strong>。<br>
+    ・粗利率は <strong>30〜33%レンジで維持</strong> されており、設定変更でも収益悪化リスクは低い。<br>
+    ・<strong>5/7(GW明け)以降</strong>は再び設定1中心に戻る見込み（業界標準パターン）。
+  </div>
+
+<!-- 5. 7日予測 -->
+<section id="sec-5">
+  <h2><span class="num">5</span>7日終了時 主要指標（実績／確定値）</h2>
+
+  <h3>5-1. 打込の推移実績</h3>
+  <p>ミリオンゴッドは初日23,547から7日目26,014に上昇 → <strong>維持率110.5%</strong>（初日比+10.5%）。過去メガヒットを上回る稼働継続性を実証。</p>
+  <table>
+    <thead><tr><th>機種</th><th class="r">第1日 → 第7日 推移</th><th class="r">維持率</th></tr></thead>
+    <tbody>
+      <tr><td>Lパチスロ北斗の拳AD XR</td><td class="r">19,887 → 26,495</td><td class="r" style="color:var(--good)">133.2%</td></tr>
+      <tr><td>L東京喰種CT</td><td class="r">19,238 → 23,988</td><td class="r" style="color:var(--good)">124.7%</td></tr>
+      <tr><td>Lモンキーターン5CE</td><td class="r">17,970 → 22,558</td><td class="r" style="color:var(--good)">125.5%</td></tr>
+      <tr><td>Lスマスロ化物語KH</td><td class="r">22,280 → 24,895</td><td class="r">111.7%</td></tr>
+      <tr><td>L/バジリスク絆2～天膳～/ZN</td><td class="r">20,561 → 23,239</td><td class="r">113.0%</td></tr>
+      <tr class="hl-row"><td><strong>L/ ミリオンゴッド /CX（7日実績）</strong></td><td class="r">23,547 → <strong>26,014</strong></td><td class="r" style="color:var(--good)"><strong>110.5%</strong></td></tr>
+    </tbody>
+  </table>
+
+  <h3>5-2. 台粗利の実績（7日累積）</h3>
+  <div class="note">予測 20〜25万円規模に対し、<strong>7日累積 +233,105円/台</strong> を達成（1日平均33,300円）。<strong>過去最高水準を実証</strong>。設定変更影響で第4日目以降やや減速（38,789→26,746）も、累積は順調に積み上がる。</div>
+
+  <h3>5-3. 超率打込（23,000枚水準）の7日実績</h3>
+  <div class="note">予測50〜65%に対し、<strong>第6日に89%でピーク・第7日も81%維持</strong>。過去メガヒットの7日目水準を全レンジで上回り、<strong>歴代最強クラス</strong> を実証。</div>
+</section>
+
+<!-- 6. 10週目予測 -->
+<section id="sec-6">
+  <h2><span class="num">6</span>10週目（10週終了時点）予測</h2>
+  <p>過去機種の <strong>「10週目の維持率（=10週目打込 ÷ 1週目打込）」</strong> から、ミリオンゴッドの長期予測を行う。</p>
+  <table>
+    <thead><tr><th>機種</th><th class="r">1週目打込</th><th class="r">10週目打込</th><th class="r">維持率</th><th>カテゴリ</th></tr></thead>
+    <tbody>
+      <tr><td>Lパチスロ北斗の拳AD XR ('23/4)</td><td class="r">19,887</td><td class="r">〜23,000</td><td class="r">〜115%</td><td>ロングセラー（業界最強）</td></tr>
+      <tr><td>Lスマスロ化物語KH ('25/12/7)</td><td class="r">24,831</td><td class="r">推定 19,000〜22,000</td><td class="r">76〜88%</td><td>メガヒット</td></tr>
+      <tr><td>L東京喰種CT ('25/2)</td><td class="r">19,238</td><td class="r">〜22,000</td><td class="r">〜114%</td><td>メガヒット</td></tr>
+      <tr><td>L/ヨシムネS/SC2 ('25/4)</td><td class="r">22,619</td><td class="r">〜18,000</td><td class="r">〜80%</td><td>メガヒット</td></tr>
+      <tr><td>Lルパン三世大航海者H1 ('24/12)</td><td class="r">17,984</td><td class="r">〜18,000</td><td class="r">〜100%</td><td>ロングセラー</td></tr>
+      <tr><td>Lパチスロ鉄拳6YD01H ('26/1)</td><td class="r">21,705</td><td class="r">—</td><td class="r">—</td><td>集計中</td></tr>
+    </tbody>
+  </table>
+
+  <div style="background:#fff8dc;border:1px solid var(--gold);border-radius:6px;padding:16px 20px;margin-top:14px">
+    <strong style="color:var(--primary);font-size:15px">ミリオンゴッド 10週目予測（7日確定値ベース）</strong>
+    <ul style="margin:10px 0 0;padding-left:22px;line-height:1.9">
+      <li>1週目打込平均 <strong>25,836</strong>、中古相場 <strong>¥2,324,565</strong>（4/27時点で-7%軟化）、動画支持率3,199%という極端な指標から、<strong>長期維持型のロングセラーになる確率が高い</strong></li>
+      <li><strong>10週目打込予測: 20,500〜23,500（維持率80〜90%）</strong> — 7日実績25,836をベースに上方修正</li>
+      <li><strong>10週目台粗利予測: 13,000〜20,000円/1台/日</strong>（メガヒット帯維持・7日確定値32,877から減衰）</li>
+      <li>稼働は7週目以降に第二の山が来る可能性（実機を打てなかった層が中古相場低下を待って導入する流れ）</li>
+      <li><strong>4/23以降の全国設定操作（設定1→3振替）</strong>を踏まえ、設定3比率20%前後でロングテール化が見込まれる</li>
+    </ul>
+  </div>
+</section>
+
+<!-- 7. 期間比較 -->
+<section id="sec-7">
+  <h2><span class="num">7</span>期間比較（全国版）— ミリオンゴッド導入による他機種への影響</h2>
+
+  <h3>7-1. 期間1（4/13〜4/19）vs 期間2（4/20〜4/26 7日確定）</h3>
+  <p>ミリオンゴッド導入7日間で <strong>台粗利を大きく落とした機種ワースト10</strong>（打込増減も併記）:</p>
+  <table>
+    <thead>
+      <tr>
+        <th rowspan="2">機種名</th>
+        <th class="r" colspan="3">打込</th>
+        <th class="r" colspan="3">台粗利</th>
+      </tr>
+      <tr>
+        <th class="r">期間1</th><th class="r">期間2</th><th class="r">増減</th>
+        <th class="r">期間1</th><th class="r">期間2</th><th class="r">増減</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="hl-row"><td><strong>L甲鉄城のカバネリ 海門決戦 XX</strong></td><td class="r">17,640</td><td class="r">16,946</td><td class="r">-695</td><td class="r">7,563</td><td class="r">4,833</td><td class="r" style="color:var(--bad)">-2,730</td></tr>
+      <tr class="hl-row"><td><strong>LB異世界かるてっと KR</strong></td><td class="r">15,087</td><td class="r">13,480</td><td class="r" style="color:var(--bad)">-1,607</td><td class="r">7,152</td><td class="r">4,878</td><td class="r" style="color:var(--bad)">-2,275</td></tr>
+      <tr><td>Lスマスロ北斗の拳 転生の章2 MW</td><td class="r">10,767</td><td class="r">10,714</td><td class="r">-53</td><td class="r">2,684</td><td class="r">1,849</td><td class="r" style="color:var(--bad)">-835</td></tr>
+      <tr><td>L虚構推理 ST</td><td class="r">19,614</td><td class="r">17,353</td><td class="r" style="color:var(--bad)">-2,261</td><td class="r">15,524</td><td class="r">10,948</td><td class="r" style="color:var(--bad)">-4,576</td></tr>
+      <tr><td>Lパチスロヨルムンガンド ND01G</td><td class="r">15,502</td><td class="r">11,855</td><td class="r" style="color:var(--bad)">-3,647</td><td class="r">12,036</td><td class="r">8,532</td><td class="r" style="color:var(--bad)">-3,504</td></tr>
+      <tr><td>LB/スマスロサンダーVHA</td><td class="r">10,600</td><td class="r">11,084</td><td class="r" style="color:var(--good)">+484</td><td class="r">2,215</td><td class="r">1,644</td><td class="r" style="color:var(--bad)">-570</td></tr>
+      <tr><td>Lスマスロ攻殻機動隊 ZS</td><td class="r">12,175</td><td class="r">12,408</td><td class="r" style="color:var(--good)">+233</td><td class="r">5,948</td><td class="r">4,436</td><td class="r" style="color:var(--bad)">-1,512</td></tr>
+      <tr><td>L/真打吉宗/A1</td><td class="r">19,928</td><td class="r">17,610</td><td class="r" style="color:var(--bad)">-2,318</td><td class="r">17,551</td><td class="r">14,157</td><td class="r" style="color:var(--bad)">-3,394</td></tr>
+      <tr><td>Lアクダマドライブ TP</td><td class="r">15,510</td><td class="r">12,433</td><td class="r" style="color:var(--bad)">-3,077</td><td class="r">11,708</td><td class="r">9,517</td><td class="r" style="color:var(--bad)">-2,190</td></tr>
+      <tr><td>L炎炎ノ消防隊2</td><td class="r">10,758</td><td class="r">11,839</td><td class="r" style="color:var(--good)">+1,081</td><td class="r">5,576</td><td class="r">4,633</td><td class="r" style="color:var(--bad)">-943</td></tr>
+    </tbody>
+  </table>
+  <div class="note">
+    <strong>7日確定での所見:</strong><br>
+    ・<strong>L甲鉄城のカバネリ（同じ機種タイプの直前ヒット）が最も大きく被弾</strong> → 台粗利-36%。GW近辺でユーザー注目がミリオンゴッドに移行。<br>
+    ・<strong>打込ダメージ最大はLパチスロヨルムンガンド ND01G(-3,647)</strong>。次いで Lアクダマドライブ TP(-3,077)、L/真打吉宗/A1(-2,318) と4/5発売の同期世代が直撃。<br>
+    ・<strong>打込はプラスだが粗利マイナスの機種</strong>（炎炎ノ消防隊2 +1,081/-943、攻殻機動隊 +233/-1,512、サンダーVHA +484/-570）→ <strong>店舗が当該機種で高設定を入れた</strong>結果と推察される。<br>
+    ・スマスロ ART/AT 全体で粗利が15〜35%減。ミリオンゴッドが市場のキャッシュを吸収する構図は7日確定でも維持。<br>
+    ・<strong>ジャグラー系（SマイジャグラーV KD）は粗利率比較80.1%</strong>と影響軽微 → ART/AT客層からの強奪型は変わらず。<br>
+    ・沖ドキ系（S/沖ドキ！BLACK/XA）は89.3%で踏みとどまり、GW期待値で再浮上する可能性。
+  </div>
+
+  <h3>7-2. GW期間（4/29〜5/6）以降の予測される動き</h3>
+  <ul class="actions">
+    <li>導入7日終了時点で動画支持率864% → 継続的な高水準。<strong>稼働の高止まり継続</strong>。直撃機種（カバネリ・真打吉宗・虚構推理・ヨルムンガンド）はGW期間中も追加ダメージ可能性。</li>
+    <li>ハナビ・サンダーV・ジャグラー系は <strong>GW需要で逆に持ち直す</strong>見込み。</li>
+    <li><strong>対策:</strong> 既存ART/AT機種の入替候補を再検討。ミリオンゴッドの台数追加 or 同期発売機種（特にカバネリ）の早期撤去判断ライン引き直し。</li>
+    <li><strong>L甲鉄城のカバネリの-36%は警戒値</strong>（撤去ライン突破）。GW明けに撤去候補としてリスト化推奨。</li>
+  </ul>
+</section>
+
+<!-- 8. 総合評価 -->
+<section id="sec-8">
+  <h2><span class="num">8</span>総合評価</h2>
+
+  <h3>強み（◎）</h3>
+  <table>
+    <thead><tr><th>項目</th><th class="c">評価</th><th>コメント</th></tr></thead>
+    <tbody>
+      <tr><td>打込量</td><td class="c"><span class="badge good">◎</span></td><td>過去メガヒットと同水準（25,000台）</td></tr>
+      <tr><td>台粗利</td><td class="c"><span class="badge gold">★★★</span></td><td><strong>歴代トップを3倍引き離す異次元</strong>（37,578）</td></tr>
+      <tr><td>玉単価・玉利</td><td class="c"><span class="badge gold">★★★</span></td><td>玉単価4.247・玉利1.465は過去最高クラス</td></tr>
+      <tr><td>超率打込</td><td class="c"><span class="badge good">◎</span></td><td>17,000枚超率97%（7日終了）は『北斗の拳AD XR』『化物語KH』『東京喰種CT』クラス</td></tr>
+      <tr><td>MY突破率</td><td class="c"><span class="badge good">◎</span></td><td>設定1で52%（2025年平均の2倍）</td></tr>
+      <tr><td>コンプ率</td><td class="c"><span class="badge good">◎</span></td><td>設定6で0.71%（7日サンプル増で正常化）→ 『ヨシムネ』クラス</td></tr>
+      <tr><td>動画支持率</td><td class="c"><span class="badge gold">★★★</span></td><td>初日3,199%は前例なき水準</td></tr>
+      <tr><td>中古相場</td><td class="c"><span class="badge gold">★★★</span></td><td>¥2,324,565（7日時点）2024〜2026年最高</td></tr>
+    </tbody>
+  </table>
+
+  <h3>注意点（△）</h3>
+  <table>
+    <thead><tr><th>項目</th><th class="c">評価</th><th>コメント</th></tr></thead>
+    <tbody>
+      <tr><td>設定1偏重（緩和傾向）</td><td class="c"><span class="badge warn">△→◯</span></td><td>使用割合 7日累計 56.2%（4/23以降に設定1→設定3振替で全国規模で改善）</td></tr>
+      <tr><td>玉単価高</td><td class="c"><span class="badge warn">△</span></td><td>7日平均 4.124（=台売上 106,545円）。客飛び早い可能性</td></tr>
+      <tr><td>周辺機種ダメージ</td><td class="c"><span class="badge warn">△</span></td><td>L甲鉄城のカバネリ -36%、虚構推理 -30%、ヨルムンガンド -29% など同期世代＋直前ヒット機種に直撃</td></tr>
+    </tbody>
+  </table>
+
+  <h3>推奨アクション</h3>
+  <ol class="actions">
+    <li>
+      <strong>稼働ピーク（4/19〜5/6 GW）期間の高設定使用比率を意識的に上げる</strong> → コンプ率が高いため射倖感を演出できる<br>
+      <span style="font-size:13px;color:var(--text-sub)">※粗利率35%基準で、3パターンの推奨使用割合を下記に提示</span>
+    </li>
+    <li><strong>同期発売機種（真打吉宗／虚構推理／ヨルムンガンド／アクダマドライブ）の入替判断を前倒し検討</strong></li>
+    <li>動画支持率の異常値から、5月以降も中古相場高止まり予想 → <strong>増台判断は早めに</strong></li>
+    <li>ジャグラー・ハナビ系は影響軽微 → 据え置きでOK</li>
+  </ol>
+
+  <h3 id="sec-gw" style="margin-top:28px">★ GW期間 推奨配分（全体お客様勝率38%基準・設置10台想定／7日確定値で再計算）</h3>
+  <div style="background:#e8f4f8;border-left:4px solid #1976d2;padding:12px 16px;margin-bottom:12px;font-size:13.5px;line-height:1.75">
+    <strong>「全体勝率38%」の定義（＝お客様勝率）:</strong><br>
+    <strong>お客様が勝った台の割合（＝差枚マイナスで終了した台%）を38%</strong> として運用目標を設定。<br>
+    実データでは現状の全体お客様勝率は <strong>31.87%</strong>（=100台中31.87台でお客様が勝ち、残り68.13台で店が勝つ）— 全国は既に高設定振替を進めている。<br>
+    目標 <strong>お客様勝率38%</strong> に引き上げるためには、設定5・6などの高設定を追加投入し、<strong>お客様がより勝ちやすいホール</strong> にする（=GW期間の射倖感演出・集客投資）。<br>
+    <span style="color:var(--text-sub);font-size:12.5px">※設定別お客様勝率（7日確定）：設定1=27.38% / 設定2=30.14% / 設定3=38.21% / 設定4=43.72% / 設定5=62.61% / 設定6=67.67%</span>
+  </div>
+
+  <h4 style="margin:18px 0 8px;color:#333">▼ 設置10台 推奨配分（3パターン・7日確定値）</h4>
+  <table>
+    <thead>
+      <tr>
+        <th>設定</th>
+        <th class="r">お客様勝率<br>(マイナス率)</th>
+        <th class="r">台粗利<br>（1台/日）</th>
+        <th class="r">現状<br>(10台換算)</th>
+        <th class="r" style="background:#2e7d32">A. 保守型<br>（平日通常）</th>
+        <th class="r" style="background:#1565c0">B. 標準型 ★38%<br>（GW・週末）</th>
+        <th class="r" style="background:#c62828">C. 攻め型<br>（GWピーク日）</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>設定1</td><td class="r">27.38%</td><td class="r" style="color:var(--good)">+46,303</td><td class="r">5.6台</td><td class="r">6台</td><td class="r">4台</td><td class="r">3台</td></tr>
+      <tr><td>設定2</td><td class="r">30.14%</td><td class="r" style="color:var(--good)">+31,821</td><td class="r">2.0台</td><td class="r">2台</td><td class="r">2台</td><td class="r">2台</td></tr>
+      <tr><td>設定3</td><td class="r">38.21%</td><td class="r" style="color:var(--good)">+17,801</td><td class="r">1.6台</td><td class="r">1台</td><td class="r">1台</td><td class="r">1台</td></tr>
+      <tr><td>設定4</td><td class="r">43.72%</td><td class="r" style="color:var(--bad)">-5,398</td><td class="r">0.4台</td><td class="r">1台</td><td class="r">1台</td><td class="r">2台</td></tr>
+      <tr><td>設定5</td><td class="r" style="color:var(--good)">62.61%</td><td class="r" style="color:var(--bad)">-36,001</td><td class="r">0.2台</td><td class="r">0台</td><td class="r">1台</td><td class="r">1台</td></tr>
+      <tr><td>設定6</td><td class="r" style="color:var(--good)">67.67%</td><td class="r" style="color:var(--bad)">-59,542</td><td class="r">0.3台</td><td class="r">0台</td><td class="r">1台</td><td class="r">1台</td></tr>
+      <tr class="hl-row">
+        <td colspan="3" style="text-align:right"><strong>合計</strong></td>
+        <td class="r"><strong>10台</strong></td>
+        <td class="r"><strong>10台</strong></td>
+        <td class="r"><strong>10台</strong></td>
+        <td class="r"><strong>10台</strong></td>
+      </tr>
+      <tr style="background:#fff8dc">
+        <td colspan="3" style="text-align:right"><strong>想定お客様勝率（マイナス率）</strong></td>
+        <td class="r"><strong>31.87%</strong></td>
+        <td class="r"><strong>30.65%</strong></td>
+        <td class="r" style="color:var(--primary)"><strong>38.20%</strong></td>
+        <td class="r"><strong>39.84%</strong></td>
+      </tr>
+      <tr style="background:#fff8dc">
+        <td colspan="3" style="text-align:right">想定店勝率（プラス率）</td>
+        <td class="r">68.13%</td>
+        <td class="r">69.35%</td>
+        <td class="r">61.80%</td>
+        <td class="r">60.16%</td>
+      </tr>
+      <tr style="background:#fff8dc">
+        <td colspan="3" style="text-align:right"><strong>想定加重粗利率</strong></td>
+        <td class="r" style="color:var(--good)"><strong>30.9%</strong></td>
+        <td class="r" style="color:var(--good)"><strong>33.1%</strong></td>
+        <td class="r" style="color:var(--warn)"><strong>17.2%</strong></td>
+        <td class="r" style="color:var(--bad)"><strong>12.4%</strong></td>
+      </tr>
+      <tr style="background:#fff8dc">
+        <td colspan="3" style="text-align:right"><strong>想定台粗利（1台/日）</strong></td>
+        <td class="r"><strong>32,877円</strong></td>
+        <td class="r" style="color:var(--good)"><strong>35,386円</strong></td>
+        <td class="r"><strong>16,571円</strong></td>
+        <td class="r" style="color:var(--bad)"><strong>11,401円</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:16px 0">
+    <div style="border:2px solid #2e7d32;border-radius:6px;padding:14px">
+      <div style="background:#2e7d32;color:#fff;padding:4px 8px;border-radius:4px;display:inline-block;font-size:12px;font-weight:700">A. 保守型</div>
+      <h4 style="margin:8px 0 6px;color:#2e7d32;border:none">平日通常営業</h4>
+      <div style="font-size:13px;line-height:1.75">
+        配分: <strong>6/2/1/1/0/0</strong><br>
+        お客様勝率 <strong>30.7%</strong>（現状-1.2pt）<br>
+        粗利率 <strong>33.1%</strong><br>
+        <strong>台粗利 35,386円/1台/日</strong><br>
+        <span style="color:var(--text-sub);font-size:12px">→ 設定3を1台投入して稼働感演出。設定5・6ゼロで粗利重視。</span>
+      </div>
+    </div>
+    <div style="border:3px solid #1565c0;border-radius:6px;padding:14px;background:#e3f2fd">
+      <div style="background:#1565c0;color:#fff;padding:4px 8px;border-radius:4px;display:inline-block;font-size:12px;font-weight:700">B. 標準型 ★お客様勝率38%</div>
+      <h4 style="margin:8px 0 6px;color:#1565c0;border:none">GW期間・週末</h4>
+      <div style="font-size:13px;line-height:1.75">
+        配分: <strong>4/2/1/1/1/1</strong><br>
+        お客様勝率 <strong>38.20%</strong> ≒ 目標38%達成<br>
+        粗利率 <strong>17.2%</strong><br>
+        <strong>台粗利 16,571円/1台/日</strong><br>
+        <span style="color:var(--text-sub);font-size:12px">→ 設定5・6を各1台ずつ投入。お客様の勝ち体験を増やして集客力MAX。</span>
+      </div>
+    </div>
+    <div style="border:2px solid #c62828;border-radius:6px;padding:14px">
+      <div style="background:#c62828;color:#fff;padding:4px 8px;border-radius:4px;display:inline-block;font-size:12px;font-weight:700">C. 攻め型</div>
+      <h4 style="margin:8px 0 6px;color:#c62828;border:none">GWピーク日（5/3〜5/5）</h4>
+      <div style="font-size:13px;line-height:1.75">
+        配分: <strong>3/2/1/2/1/1</strong><br>
+        お客様勝率 <strong>39.84%</strong>（目標超過）<br>
+        粗利率 <strong>12.4%</strong><br>
+        <strong>台粗利 11,401円/1台/日</strong><br>
+        <span style="color:var(--text-sub);font-size:12px">→ 設定4を2台に増強。お客様勝率約40%達成で「ミリオンゴッドは勝てる」評判を作る。</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>★ Bパターン（お客様勝率38%・推奨）の運用詳細（7日確定値）:</strong><br>
+    <strong>10台構成の具体例（台粗利は全て1台/日の数値）:</strong><br>
+    ・<strong>設定1 × 4台</strong>（40%）: 粗利エンジン。台粗利 <strong>+46,303円/1台/日</strong>。<br>
+    ・<strong>設定2 × 2台</strong>（20%）: 粗利補助。台粗利 <strong>+31,821円/1台/日</strong>。<br>
+    ・<strong>設定3 × 1台</strong>（10%）: 中域出玉演出。台粗利 <strong>+17,801円/1台/日</strong>。<br>
+    ・<strong>設定4 × 1台</strong>（10%）: お客様勝率44%の中庸設定。台粗利 <strong>-5,398円/1台/日</strong>（3日値-9,625円から改善）。<br>
+    ・<strong>設定5 × 1台</strong>（10%）: 奇数寄り出玉感（MY6,080で全設定最大）。台粗利 <strong style="color:var(--bad)">-36,001円/1台/日</strong>（3日値-48,009円から改善）。<br>
+    ・<strong>設定6 × 1台</strong>（10%）: 話題作り＆SNS拡散役。コンプ率0.71%（7日サンプル増で正常化）。台粗利 <strong style="color:var(--bad)">-59,542円/1台/日</strong>。<br>
+    <br>
+    <strong>運用のポイント:</strong><br>
+    ・このBパターンは <strong>現状の粗利率30.9%を17.2%まで落とす</strong>が、お客様勝率が32%→38%に上昇し、<strong>「ミリオンゴッドに行けば勝てる」体験を演出</strong>。<br>
+    ・GW明け(5/7〜)はAパターンに戻し、<strong>月次粗利率30%超で着地させる</strong>運用。<br>
+    ・<strong>★全国実績（7日累計）は既にA保守型に近い配分で運営中</strong> → 先行店として早めにB標準型へ移行することで競合優位を確保。<br>
+    ・<strong>設定1・2合計で60%維持</strong>が粗利率15%ラインの死守条件。これを割ると日次赤字リスク。
+  </div>
+</section>
+
+<footer>
+  集計基準: 2026/04/26（7日確定）／作成: 2026/04/27 7日確定版<br>
+  © P-Brain 営業資料
+</footer>
+
+</div>
+</body>
+</html>
